@@ -1,0 +1,49 @@
+<mat-card>
+  <p mat-card-title>Details of the Expense</p>
+
+	<mat-divider></mat-divider>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Employee Name</mat-label>
+        <input matInput placeholder="Enter your name" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Designation</mat-label>
+        <input matInput placeholder="Enter your designation" >
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Purpose</mat-label>
+        <input matInput placeholder="Enter your purpose" >
+      </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Purpose</mat-label>
+          <input matInput placeholder="Enter your purpose" >
+        </mat-form-field>
+
+        <div class="flex-div">
+          <div>
+            <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            <input type="file" hidden (change)="onFileSelected($event)" #fileInput >
+            <span class="file-name">{{selectedFile?.name}}</span>
+          </div>
+          <div>
+            <mat-icon class="show-btn">visibility</mat-icon>
+          </div>
+        </div>
+
+
+
+
+
+
+
+      <div class="submit-btn"><button mat-raised-button color="primary">Submit</button></div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
