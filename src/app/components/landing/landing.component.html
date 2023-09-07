@@ -10,7 +10,7 @@
 <mat-card>
   <mat-card-content>
     <!-- <div class="heading">Landing Page</div> -->
-    <form class="example-form" [formGroup]="loginform" (ngSubmit)="loginsubmit()">
+    <form class="example-form" [formGroup]="loginform" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width" >
         <mat-label>Token No.</mat-label>
         <input matInput placeholder="Tok12456" formControlName="token">
