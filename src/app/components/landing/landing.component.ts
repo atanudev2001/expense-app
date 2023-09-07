@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
+// import {JwtHelperService} from '@auth0/angular-jwt';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
@@ -7,12 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
+  loginform = new FormGroup({
+    token:new FormControl(),
+    userid:new FormControl()
+  });
+  // constructor(private jwtHelper: JwtHelperService){}
 
-  constructor() { }
+  loginsubmit(){
+    localStorage.setItem('data',JSON.stringify(this.loginform.value));
+    // let token2 = localStorage.getItem('token');
+    // if (this.jwtHelper.isTokenExpired(token2)) {
+    //   alert('Token expired');
+    // } else {
+    //   alert('Token valid');
+    // }
+  }
 
   ngOnInit(): void {
-    // let localdata = {token:'1234',user}
-    // let data = localStorage.setItem('token','1234');
+
   }
 
 }
