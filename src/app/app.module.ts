@@ -8,7 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
+import { JwtInterceptor, JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {MatCardModule} from '@angular/material/card';
@@ -21,6 +21,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatDividerModule } from "@angular/material/divider";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import { LoginComponent } from './components/login/login.component';
+
 
 export function tokenGetter(){
   return localStorage.getItem('access_token');
@@ -29,7 +33,8 @@ export function tokenGetter(){
   declarations: [
     AppComponent,
     LandingComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ export function tokenGetter(){
     MatDividerModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule,
     MatTooltipModule,
     JwtModule.forRoot({
       config:{
@@ -63,6 +69,7 @@ export function tokenGetter(){
   ],
   providers: [
     {
+      // JwtHelperService,
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,

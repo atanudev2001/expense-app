@@ -1,15 +1,6 @@
-<p>
-  <mat-toolbar>
-    <span>Expense App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" matTooltip="Login" aria-label="Example icon-button with share icon"  routerLink="/home">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+
 <mat-card>
   <mat-card-content>
-    <!-- <div class="heading">Landing Page</div> -->
     <form class="example-form" [formGroup]="loginform" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width" >
         <mat-label>Token No.</mat-label>
@@ -20,8 +11,8 @@
         <mat-label>User ID</mat-label>
         <input matInput placeholder="user3456" formControlName="userid">
       </mat-form-field>
-      <div class="submit-btn"><button mat-raised-button color="primary">Submit</button></div>
-
+      <div class="submit-btn"><button mat-raised-button color="primary" >Submit</button></div>
     </form>
   </mat-card-content>
+
 </mat-card>

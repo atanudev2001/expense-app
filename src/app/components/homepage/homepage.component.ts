@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit {
         this.router.navigate(['/landing']);
       }
     }else{
-      this.router.navigate(['/landing']);
+      this.router.navigate(['/home']);
     }
   }
 
