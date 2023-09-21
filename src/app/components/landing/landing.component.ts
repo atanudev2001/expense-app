@@ -1,13 +1,15 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { FakeUserService } from 'src/app/services/fake-user.service';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  styleUrls: ['./landing.component.css'],
+  providers: [FakeUserService]
 })
 export class LandingComponent implements OnInit {
 
