@@ -14,6 +14,3 @@
 .mat-card{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 50%;}
 .mat-card-content{    width: 100%; margin: 0 auto; max-width: 300px;}
 .submit-btn{text-align: center;}
-
-.valid{background-color: aquamarine;text-align: center;padding: 8px;display: none;}
-.invalid{background-color:red;text-align: center;padding:8px;color: #fff;display: none;}

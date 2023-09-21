@@ -8,6 +8,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LandingComponent } from './components/landing/landing.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { JwtInterceptor, JwtModule, JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -19,12 +21,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatDividerModule } from "@angular/material/divider";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { LoginComponent } from './components/login/login.component';
+
+
+export function tokenGetter(){
+  return localStorage.getItem('access_token');
+}
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,16 @@ import { MatDividerModule } from "@angular/material/divider";
     MatIconModule,
     MatDividerModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
     MatTooltipModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+        allowedDomains:["http://localhost:8080/"],
+        disallowedRoutes:["http://localhost:8080/home"]
+      }
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
@@ -48,7 +67,14 @@ import { MatDividerModule } from "@angular/material/divider";
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    {
+      // JwtHelperService,
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
