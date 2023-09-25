@@ -1,29 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { FakeUserService } from 'src/app/services/fake-user.service';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css'],
-  providers: [FakeUserService]
 })
 export class LandingComponent implements OnInit {
 
-  isvalid:boolean = false;
+  temp:any = {};
   loginform = new FormGroup({
-    token:new FormControl(),
-    userid:new FormControl()
+    token:new FormControl('',[Validators.required]),
+    userid:new FormControl('',[Validators.required])
   });
 
-  user: any;
-  isExpired!: boolean;
-  expirationDate!: Date;
 
-  constructor(private jwtHelper: JwtHelperService, private router: Router,private snackBar: MatSnackBar){
+
+  constructor( private router: Router,private snackBar: MatSnackBar){
 
   }
 
@@ -31,22 +26,17 @@ export class LandingComponent implements OnInit {
 
   }
 
+
   onSubmit(){
-    localStorage.setItem('access_token',JSON.stringify(this.loginform.value));
-    const token = this.jwtHelper.tokenGetter();
-    if (token) {
-      this.user = this.jwtHelper.decodeToken(token as string);
-      this.isExpired = this.jwtHelper.isTokenExpired(token as string);
-      console.log(this.isExpired);
-      if(!this.isExpired) {
-        this.snackBar.open('Token is valid','', {duration:5000,verticalPosition: 'bottom'});
+    this.temp =JSON.stringify(this.loginform.value);
+    sessionStorage.setItem('access_token',this.temp);
+    if (this.loginform.valid) {
         this.router.navigate(['/login']);
       } else{
-        this.snackBar.open('Token is Expired','', {duration:5000,verticalPosition: 'bottom'});
+        this.snackBar.open('Invalid Credentials','', {duration:5000,verticalPosition: 'bottom'});
         this.router.navigate(['/landing']);
       }
     }
-  }
 
 }
 

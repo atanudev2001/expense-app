@@ -1,2 +1,3 @@
 # ExpenseApp
-  1)fake service ready and routing done
+Login ready with full authentication and authorization 
+This is a clean code

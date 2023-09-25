@@ -25,7 +25,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { LoginComponent } from './components/login/login.component';
 import { TestComponent } from './components/test/test.component';
-
+import { FakeUserService } from './services/user-service/fake-user.service';
 
 
 export function tokenGetter(){
@@ -71,6 +71,7 @@ export function tokenGetter(){
     })
   ],
   providers: [
+    FakeUserService,
     {
       // JwtHelperService,
 
