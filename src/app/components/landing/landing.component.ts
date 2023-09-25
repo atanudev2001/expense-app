@@ -30,7 +30,6 @@ export class LandingComponent implements OnInit {
   onSubmit(){
     this.temp =JSON.stringify(this.loginform.value);
     sessionStorage.setItem('access_token',this.temp);
-    // console.log(this.temp)
     if (this.loginform.valid) {
         this.router.navigate(['/login']);
       } else{

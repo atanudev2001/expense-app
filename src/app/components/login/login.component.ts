@@ -1,4 +1,4 @@
-import { FakeUserService } from 'src/app/services/fake-user.service';
+import { FakeUserService } from 'src/app/services/user-service/fake-user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/login']);
       } else{
         this.userservice.login(this.userlogin.value).subscribe((res)=>{
-          console.log(res);
           if(res.message === "Login successful"){
             this.snackBar.open('Login Succesful','', {duration:2000,verticalPosition: 'bottom'});
             this.router.navigate(['/home']);
