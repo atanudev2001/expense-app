@@ -33,7 +33,6 @@ export class FakeUserService implements UserServiceInterface {
           if (this.credential.userid === data.userid && this.credential.password === data.password){
             this.status = true;
               sessionStorage.removeItem('access_token');
-              localStorage.removeItem('access_token');
           }else{
             this.status = false;
           }
