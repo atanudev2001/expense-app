@@ -19,8 +19,9 @@ export class HomepageComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    localStorage.removeItem('token');
   }
 
 }

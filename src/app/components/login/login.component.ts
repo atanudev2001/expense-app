@@ -21,20 +21,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   formsubmit(){
-
       if (!this.userlogin.valid) {
         this.snackBar.open('Invalid Credentials','', {duration:3000,verticalPosition: 'bottom'});
         this.router.navigate(['/login']);
       } else{
         this.Apiservice.login(this.userlogin.value).subscribe((res)=>{
           console.log(res);
+          this.snackBar.open('Login Successful','', {duration:3000,verticalPosition: 'bottom'});
           this.router.navigate(['/home']);
+
         },(err)=>{
           console.log(err);
         });
-        // localStorage.setItem('access_token','token');
-        // this.snackBar.open('Login Sucessful','', {duration:3000,verticalPosition: 'bottom'});
-        // this.router.navigate(['/home']);
       }
   }
 }

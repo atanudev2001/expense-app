@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <form class="example-form"  [formGroup]="userlogin" (ngSubmit)="formsubmit()">
+    <form class="example-form"  [formGroup]="userregister" (ngSubmit)="register()">
       <mat-form-field class="example-full-width" >
         <mat-label>User Id</mat-label>
         <input matInput placeholder="user345@" formControlName="userid" >
@@ -10,10 +10,9 @@
         <mat-label>Password</mat-label>
         <input matInput placeholder="********" type="password" formControlName="password" >
       </mat-form-field>
-      <div class="submit-btn"><button mat-raised-button color="primary" type="submit">Login</button></div>
+      <div class="submit-btn"><button mat-raised-button color="primary" type="submit">Register</button></div>
     </form>
-    <div>No account? create one <a routerLink="/register">Register</a></div>
   </mat-card-content>
 
 </mat-card>
-<router-outlet></router-outlet>
+

@@ -24,6 +24,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { LoginComponent } from './components/login/login.component';
 import { FakeUserService } from './services/user-service/fake-user.service';
+import { RegisterComponent } from './components/register/register.component';
 
 
 export function tokenGetter(){
@@ -34,6 +35,7 @@ export function tokenGetter(){
     AppComponent,
     HomepageComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

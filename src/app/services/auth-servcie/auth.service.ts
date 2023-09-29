@@ -7,6 +7,6 @@ export class AuthService {
 
   constructor() { }
   islogin():boolean {
-    return localStorage.getItem('access_token')? true : false;
+    return localStorage.getItem('token')? true : false;
   }
 }
