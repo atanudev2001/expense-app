@@ -25,6 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './components/login/login.component';
 import { FakeUserService } from './services/user-service/fake-user.service';
 import { RegisterComponent } from './components/register/register.component';
+import { ModalComponent } from './components/modal/modal.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 
 export function tokenGetter(){
@@ -36,6 +38,7 @@ export function tokenGetter(){
     HomepageComponent,
     LoginComponent,
     RegisterComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,8 @@ export function tokenGetter(){
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatDialogModule,
     MatTooltipModule,
     JwtModule.forRoot({
       config:{

@@ -1,2 +1,2 @@
 # ExpenseApp
-Final code
+image storing and showing in the modal window

@@ -16,6 +16,7 @@ export class FakeUserService implements UserServiceInterface {
   isExpired!: boolean;
   status:boolean = false;
   token:any;
+  upload: any;
 
   constructor(private jwtHelper: JwtHelperService) {
     this.credential = new Credentials('atanu@bosenet.com','123456');
@@ -44,7 +45,26 @@ export class FakeUserService implements UserServiceInterface {
           return of({ message: 'Unsuccessful' });
       }
   }
+  fileupload(file:any):Observable<any>{
+    const fileInput = file.target as HTMLInputElement;
+      const upload = fileInput.files?.[0];
 
+      if (upload) {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          if (reader.result && typeof reader.result === 'string') {
+            const base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
+            localStorage.setItem('file', base64String);
+            document.body.style.background = `url(data:image/png;base64,${base64String})`;
+          }
+        };
+
+        reader.readAsDataURL(upload);
+      }
+
+    return of({ message: 'Upload successful' });
+  }
 
 
 }

@@ -32,10 +32,10 @@
             <span class="file-name">{{selectedFile?.name}}</span>
           </div>
           <div>
-            <mat-icon class="show-btn">launch</mat-icon>
+            <mat-icon class="show-btn" (click)="openDialog()">launch</mat-icon>
           </div>
         </div>
-      <div class="submit-btn"><button mat-raised-button color="primary">Submit</button></div>
+      <div class="submit-btn"><button mat-raised-button color="primary" (click)="Fileupload()">Submit</button></div>
     </form>
   </mat-card-content>
 </mat-card>

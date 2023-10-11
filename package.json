@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "ng build && http-server -p 8080 -c-1 dist/expense-app"
+    "dev": "ng build && http-server -p 8080 -c-1 dist/expense-app",
+    "server": "ng build --watch --output-path dist/expense-app  && http-server -p 8080 -c-1 dist/expense-app"
   },
   "private": true,
   "dependencies": {
